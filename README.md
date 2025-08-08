@@ -40,3 +40,4 @@ Version 2: DRF Views (api/v2/)
 | GET    | `/api/v2/categories/<id>/` | Retrieve category       |
 | PATCH  | `/api/v2/categories/<id>/` | Update partial category |
 | DELETE | `/api/v2/categories/<id>/` | Delete category         |
+|GET      | /api/v2/posts/?category=2 | List posts under a specific category |
