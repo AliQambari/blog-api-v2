@@ -41,10 +41,18 @@ INSTALLED_APPS = [
     
     "blog.core.apps.CoreConfig",
     "blog.categories.apps.CategoriesConfig",
-    "blog.posts.apps.PostsConfig",  
+    "blog.posts.apps.PostsConfig", 
+    "django_filters"
     "rest_framework",
     "drf_yasg",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
