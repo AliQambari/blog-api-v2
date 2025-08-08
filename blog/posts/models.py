@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from blog.core.const import CONST
+from blog.core.errors import Messages
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -11,7 +12,7 @@ class Post(models.Model):
 
     def clean(self):
         if self.pk and self.categories.count() > CONST.MAX_CATEGORY_LIMIT:
-            raise ValidationError("At most 6 categories can be added to a post.")
+            raise ValidationError(Messages.TOO_MANY_CATEGORIES)
 
     def __str__(self):
         return self.title
