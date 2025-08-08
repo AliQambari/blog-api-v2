@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "blog.core.apps.CoreConfig",
     "blog.categories.apps.CategoriesConfig",
     "blog.posts.apps.PostsConfig", 
-    "django_filters"
+    "django_filters",
     "rest_framework",
     "drf_yasg",
 ]
@@ -52,6 +52,7 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend'
     ]
 }
+
 
 
 MIDDLEWARE = [
