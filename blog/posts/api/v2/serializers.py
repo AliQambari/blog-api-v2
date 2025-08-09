@@ -1,8 +1,15 @@
 from rest_framework import serializers
 from blog.posts.models import Post
 
-class PostSerializer(serializers.ModelSerializer):
+class PostListSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(read_only=True)  
     class Meta:
         model = Post
-        fields = ['id', 'title', 'text', 'categories', 'updated_at']
-        read_only_fields = ['id', 'updated_at']
+        fields = ['id', 'title', 'categories', 'updated_at', 'author']  
+
+class PostDetailSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(read_only=True)
+    class Meta:
+        model = Post
+        fields = '__all__'
+

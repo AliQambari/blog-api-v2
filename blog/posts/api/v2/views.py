@@ -2,17 +2,22 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from blog.posts.models import Post
-from .serializers import PostSerializer
+from .serializers import PostListSerializer, PostDetailSerializer
 from blog.core.auth import IsOwnerOrReadOnly  
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-updated_at')
-    serializer_class = PostSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
     filterset_fields = ['categories']
 
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return PostListSerializer  
+        return PostDetailSerializer 
+    
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
 
     @swagger_auto_schema(
         operation_summary="List Posts",
