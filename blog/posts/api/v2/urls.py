@@ -5,3 +5,4 @@ router = DefaultRouter()
 router.register(r'', PostViewSet, basename='posts')
 
 urlpatterns = router.urls
+
