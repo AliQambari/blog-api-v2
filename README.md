@@ -43,7 +43,7 @@ Version 2: DRF Views (api/v2/)
 |GET      | /api/v2/posts/?category=2 | List posts under a specific category |
 
 ## LOGIN / USAGE:
-
+[**LOCALHOST:/PORT/swagger/**]
 Send a POST request to the login endpoint (/api/token/) with your username and password:
 
 POST /api/token/  
