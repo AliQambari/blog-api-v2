@@ -41,3 +41,22 @@ Version 2: DRF Views (api/v2/)
 | PATCH  | `/api/v2/categories/<id>/` | Update partial category |
 | DELETE | `/api/v2/categories/<id>/` | Delete category         |
 |GET      | /api/v2/posts/?category=2 | List posts under a specific category |
+
+**lOGIN / USAGE:**
+
+*Send a POST request to the login endpoint (e.g., /api/token/) with your username and password:*
+POST /api/token/
+Content-Type: application/json
+{
+  "username": "yourusername",
+  "password": "yourpassword"
+}
+*You will receive a response containing an access token:*
+
+{
+  "access": "your_jwt_access_token_here",
+  "refresh": "your_jwt_refresh_token_here"
+}
+*Use the Access Token*
+For any protected endpoint, include the access token in the Authorization header:
+Authorization: >>  :  **Bearer your_jwt_access_token_here**
