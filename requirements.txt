@@ -15,4 +15,4 @@ typing-extensions==4.13.2
 tzdata==2025.2
 uritemplate==4.1.1
 uv==0.8.8
-#psycopg2-binary
+psycopg2-binary==2.9.9
