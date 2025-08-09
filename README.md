@@ -44,7 +44,7 @@ Version 2: DRF Views (api/v2/)
 
 ## LOGIN / USAGE:
 
-Send a POST request to the login endpoint (e.g., `/api/token/`) with your username and password:
+Send a POST request to the login endpoint (/api/token/) with your username and password:
 
 POST /api/token/  
 Content-Type: application/json
@@ -54,13 +54,13 @@ Content-Type: application/json
   "password": "yourpassword"  
 }
 
-You will receive a response containing an access token:
+*You will receive a response containing an access token:*
 
 {  
   "access": "your_jwt_access_token_here",  
   "refresh": "your_jwt_refresh_token_here"  
 }
 
-Use the Access Token: For any protected endpoint, include the access token in the Authorization header:
+*Use the Access Token: For any protected endpoint, include the access token in the Authorization header:*
 
-Authorization: Bearer your_jwt_access_token_here
+**Authorization:** >> Bearer your_jwt_access_token_here
