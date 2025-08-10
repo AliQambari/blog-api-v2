@@ -3,7 +3,7 @@
 This is a simple blog project built with **Django**, featuring two parallel API versions:
 
 - `api/v1/` → Manually implemented views (no DRF)
-- `api/v2/` → Modern RESTful API built using **Django REST Framework (DRF)**
+- `api/v2/` →  RESTful API built using **Django REST Framework (DRF)**
 
 Technologies Used:
 **Django 4.x**
