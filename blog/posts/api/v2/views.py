@@ -4,6 +4,9 @@ from rest_framework.permissions import IsAuthenticated
 from blog.posts.models import Post
 from .serializers import PostListSerializer, PostDetailSerializer
 from blog.core.auth import IsOwnerOrReadOnly  
+from blog.posts.services import PostService
+from drf_yasg import openapi
+from rest_framework.response import Response
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-updated_at')
@@ -20,13 +23,31 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
     @swagger_auto_schema(
+        manual_parameters=[
+            openapi.Parameter(
+                name='page',  # page number
+                in_=openapi.IN_QUERY,
+                description='Page number',
+                type=openapi.TYPE_INTEGER
+            ),
+            openapi.Parameter(
+                name='page_size',  # number of posts per page
+                in_=openapi.IN_QUERY,
+                description='Number of posts per page',
+                type=openapi.TYPE_INTEGER
+            )
+        ],
         operation_summary="List Posts",
         operation_description="Retrieve a list of all posts",
         tags=['Posts']
     )
     def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
+        page = request.query_params.get('page', 1)
+        page_size = request.query_params.get('page_size', 5)
 
+        data = PostService.get_paginated_posts(page=page, page_size=page_size)
+        return Response(data)
+    
     @swagger_auto_schema(
         operation_summary="Create Post",
         operation_description="Create a new post associated with the authenticated user",
